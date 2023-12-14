@@ -4,18 +4,14 @@ class CalculatorRepository : Repository {
 
     private var _result = "0"
     private var _firstNumber = "0"
-    private var _secondNumber = ""
-    private var _operator = ""
-    private var _isFirstNumberNegative = false
-    private var _isSecondNumberNegative = false
+    private var _secondNumber = "0"
+    private var _operator = "+"
 
     override fun clear() {
         _result = "0"
         _firstNumber = "0"
-        _secondNumber = ""
-        _operator = ""
-        _isFirstNumberNegative = false
-        _isSecondNumberNegative = false
+        _secondNumber = "0"
+        _operator = "+"
     }
 
     override fun appendDigitToFirstNumber(digit: Char) {
@@ -42,26 +38,16 @@ class CalculatorRepository : Repository {
         return _result
     }
 
-    override fun removeDigitFromFirstNumber() {
-        _firstNumber = _firstNumber.dropLast(1)
-        _result = _firstNumber
-    }
-
-    override fun removeDigitFromSecondNumber() {
-        _secondNumber = _secondNumber.dropLast(1)
-        _result = _secondNumber
-    }
-
     override fun setResult(result: String) {
         _result = result
     }
 
     override fun getFirstNumber(): String {
-        return (if (_isFirstNumberNegative) "-" else "") + _firstNumber
+        return _firstNumber
     }
 
     override fun getSecondNumber(): String {
-        return (if (_isSecondNumberNegative) "-" else "") + _secondNumber
+        return _secondNumber
     }
 
     override fun getOperator(): String {
@@ -70,26 +56,25 @@ class CalculatorRepository : Repository {
 
     override fun setFirstNumber(number: String) {
         _firstNumber = number
-        _result = getFirstNumber()
     }
 
     override fun setSecondNumber(number: String) {
         _secondNumber = number
-        _result = getSecondNumber()
+    }
+
+    private fun toggleSign(number: String): String {
+        if (number.startsWith("-")) {
+            return number.substring(1)
+        } else {
+            return "-$number"
+        }
     }
 
     override fun toggleFirstNumberSign() {
-        _isFirstNumberNegative = !_isFirstNumberNegative
-        _result = getFirstNumber()
+        _firstNumber = toggleSign(_firstNumber)
     }
 
     override fun toggleSecondNumberSign() {
-        _isSecondNumberNegative = !_isSecondNumberNegative
-        _result = getSecondNumber()
-    }
-
-    override fun setSecondNumberSign(sign: Boolean) {
-        _isSecondNumberNegative = sign
-        _result = getSecondNumber()
+        _secondNumber = toggleSign(_secondNumber)
     }
 }

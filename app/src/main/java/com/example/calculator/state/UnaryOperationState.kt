@@ -35,4 +35,8 @@ class UnaryOperationState(private val app: App, private val repo: Repository) : 
     override fun onCEEvent() {
 
     }
+
+    override fun getNumberToDisplay(): String {
+        return repo.getFirstNumber()
+    }
 }

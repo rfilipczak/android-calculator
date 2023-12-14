@@ -46,4 +46,8 @@ class ResultState(private val app: App, private val repo: Repository) : State {
         repo.clear()
         app.changeState(StartState(app, repo))
     }
+
+    override fun getNumberToDisplay(): String {
+        return repo.getResult()
+    }
 }

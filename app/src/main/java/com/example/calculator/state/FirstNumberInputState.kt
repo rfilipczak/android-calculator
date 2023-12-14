@@ -43,4 +43,8 @@ class FirstNumberInputState(private val app: App, private val repo: Repository) 
         repo.clear()
         app.changeState(StartState(app, repo))
     }
+
+    override fun getNumberToDisplay(): String {
+        return repo.getFirstNumber()
+    }
 }

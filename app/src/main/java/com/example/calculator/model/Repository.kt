@@ -6,8 +6,6 @@ interface Repository {
     fun appendDigitToSecondNumber(digit: Char)
     fun setOperator(operator: String)
     fun getResult(): String
-    fun removeDigitFromFirstNumber()
-    fun removeDigitFromSecondNumber()
     fun setResult(result: String)
     fun getFirstNumber(): String
     fun getSecondNumber(): String
@@ -16,5 +14,4 @@ interface Repository {
     fun setSecondNumber(number: String)
     fun toggleFirstNumberSign()
     fun toggleSecondNumberSign()
-    fun setSecondNumberSign(sign: Boolean)
 }

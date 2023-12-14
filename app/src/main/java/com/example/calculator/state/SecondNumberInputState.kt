@@ -20,7 +20,6 @@ class SecondNumberInputState(private val app: App, private val repo: Repository)
 
     override fun onEqualsEvent() {
         val result = Calculator.calculate(repo.getFirstNumber(), repo.getOperator(), repo.getSecondNumber()).toString()
-        repo.clear()
         repo.setResult(result)
         repo.setFirstNumber(result)
         app.changeState(ResultState(app, repo))
@@ -47,8 +46,11 @@ class SecondNumberInputState(private val app: App, private val repo: Repository)
             repo.clear()
             app.changeState(StartState(app, repo))
         } else {
-            repo.setSecondNumberSign(false)
             repo.setSecondNumber("0")
         }
+    }
+
+    override fun getNumberToDisplay(): String {
+        return repo.getSecondNumber()
     }
 }

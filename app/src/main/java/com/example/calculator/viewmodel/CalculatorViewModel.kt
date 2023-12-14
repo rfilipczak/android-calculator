@@ -31,27 +31,27 @@ open class Event<out T>(private val content: T) {
 
 class CalculatorViewModel : ViewModel(), App {
     private val _repository = CalculatorRepository()
-    private val _result = mutableStateOf(_repository.getResult())
     private var _state: State = StartState(this, _repository)
-    private val statusMessage = MutableLiveData<Event<String>>()
+    private val _result = mutableStateOf(_state.getNumberToDisplay())
+    private val _statusMessage = MutableLiveData<Event<String>>()
 
     val result: MutableState<String> = _result
     val message : LiveData<Event<String>>
-        get() = statusMessage
+        get() = _statusMessage
 
     fun onDigitButtonClick(digit: Char) {
         _state.onDigitInputEvent(digit)
-        _result.value = _repository.getResult()
+        _result.value = _state.getNumberToDisplay()
     }
 
     fun onCommaButtonClick() {
         _state.onCommaEvent()
-        _result.value = _repository.getResult()
+        _result.value = _state.getNumberToDisplay()
     }
 
     fun onACButtonClick() {
         _state.onClearEvent()
-        _result.value = _repository.getResult()
+        _result.value = _state.getNumberToDisplay()
     }
 
     fun onBinaryOperatorButtonClick(operator: String) {
@@ -60,17 +60,17 @@ class CalculatorViewModel : ViewModel(), App {
 
     fun onSignButtonClick() {
         _state.onSignEvent()
-        _result.value = _repository.getResult()
+        _result.value = _state.getNumberToDisplay()
     }
 
     fun onEqualsButtonClick() {
         _state.onEqualsEvent()
-        _result.value = _repository.getResult()
+        _result.value = _state.getNumberToDisplay()
     }
 
     fun onCEButtonClick() {
         _state.onCEEvent()
-        _result.value = _repository.getResult()
+        _result.value = _state.getNumberToDisplay()
     }
 
     override fun changeState(state: State) {
@@ -78,6 +78,6 @@ class CalculatorViewModel : ViewModel(), App {
     }
 
     override fun warn(text: String) {
-        statusMessage.value = Event(text)
+        _statusMessage.value = Event(text)
     }
 }

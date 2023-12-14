@@ -4,8 +4,7 @@ import com.example.calculator.model.Repository
 
 class StartState(private val app: App, private val repo: Repository) : State {
     override fun onDigitInputEvent(digit: Char) {
-        repo.setFirstNumber("")
-        repo.appendDigitToFirstNumber(digit)
+        repo.setFirstNumber(digit.toString())
         app.changeState(FirstNumberInputState(app, repo))
     }
 
@@ -36,5 +35,9 @@ class StartState(private val app: App, private val repo: Repository) : State {
 
     override fun onCEEvent() {
 
+    }
+
+    override fun getNumberToDisplay(): String {
+        return repo.getFirstNumber()
     }
 }

@@ -9,4 +9,6 @@ interface State {
     fun onCommaEvent()
     fun onSignEvent()
     fun onCEEvent()
+
+    fun getNumberToDisplay(): String
 }
