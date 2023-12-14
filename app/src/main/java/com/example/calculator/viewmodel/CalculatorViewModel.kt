@@ -58,6 +58,10 @@ class CalculatorViewModel : ViewModel(), App {
         _state.onBinaryOperatorInputEvent(operator)
     }
 
+    fun onUnaryOperatorButtonClick(operator: String) {
+        _state.onUnaryOperatorInputEvent(operator)
+    }
+
     fun onSignButtonClick() {
         _state.onSignEvent()
         _result.value = _state.getNumberToDisplay()

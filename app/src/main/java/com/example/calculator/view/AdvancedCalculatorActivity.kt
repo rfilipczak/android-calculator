@@ -53,15 +53,15 @@ class AdvancedCalculatorActivity : ComponentActivity() {
 @Composable
 fun AdvancedCalculator(viewModel: CalculatorViewModel) {
     val advancedButtons = listOf(
-        ButtonData("Sin"),
-        ButtonData("Cos"),
-        ButtonData("Tan"),
-        ButtonData("Ln"),
-        ButtonData("Log"),
-        ButtonData("%"),
-        ButtonData("Sqrt"),
-        ButtonData("x^2"),
-        ButtonData("x^y")
+        ButtonData("Sin") { viewModel.onUnaryOperatorButtonClick("Sin") },
+        ButtonData("Cos") { viewModel.onUnaryOperatorButtonClick("Cos") },
+        ButtonData("Tan") { viewModel.onUnaryOperatorButtonClick("Tan") },
+        ButtonData("Ln")  { viewModel.onUnaryOperatorButtonClick("Ln") },
+        ButtonData("Log") { viewModel.onBinaryOperatorButtonClick("Log") },
+        ButtonData("%") { viewModel.onBinaryOperatorButtonClick("%") },
+        ButtonData("Sqrt") { viewModel.onUnaryOperatorButtonClick("Sqrt") },
+        ButtonData("x^2") { viewModel.onUnaryOperatorButtonClick("^2") },
+        ButtonData("x^y") { viewModel.onBinaryOperatorButtonClick("^") }
     )
     val operatorButtons = listOf(
         ButtonData("AC") { viewModel.onACButtonClick() },
