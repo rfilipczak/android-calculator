@@ -30,6 +30,9 @@
         <activity android:name=".view.AdvancedCalculatorActivity">
 
         </activity>
+        <activity android:name=".view.MenuActivity">
+
+        </activity>
     </application>
 
 </manifest>

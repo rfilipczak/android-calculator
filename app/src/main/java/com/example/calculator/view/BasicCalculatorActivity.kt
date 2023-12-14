@@ -75,10 +75,34 @@ fun BasicCalculator(viewModel: CalculatorViewModel) {
         ButtonData(""),
         ButtonData("=") { viewModel.onEqualsButtonClick() },
     )
+    val operatorButtons = listOf(
+        ButtonData("AC") { viewModel.onACButtonClick() },
+        ButtonData("C/CE") { viewModel.onCEButtonClick() },
+        ButtonData("+/-") { viewModel.onSignButtonClick() },
+        ButtonData("/") { viewModel.onBinaryOperatorButtonClick("/") },
+        ButtonData("x") { viewModel.onBinaryOperatorButtonClick("x") },
+        ButtonData("-") { viewModel.onBinaryOperatorButtonClick("-") },
+        ButtonData("+") { viewModel.onBinaryOperatorButtonClick("+")},
+        ButtonData("=") { viewModel.onEqualsButtonClick() },
+    )
+    val digitButtons = listOf(
+        ButtonData("7") { viewModel.onDigitButtonClick('7') },
+        ButtonData("8") { viewModel.onDigitButtonClick('8') },
+        ButtonData("9") { viewModel.onDigitButtonClick('9') },
+        ButtonData("4") { viewModel.onDigitButtonClick('4') },
+        ButtonData("5") { viewModel.onDigitButtonClick('5') },
+        ButtonData("6") { viewModel.onDigitButtonClick('6') },
+        ButtonData("1") { viewModel.onDigitButtonClick('1') },
+        ButtonData("2") { viewModel.onDigitButtonClick('2') },
+        ButtonData("3") { viewModel.onDigitButtonClick('3') },
+        ButtonData("0") { viewModel.onDigitButtonClick('0') },
+        ButtonData(".") { viewModel.onCommaButtonClick() },
+        ButtonData("")
+    )
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text(text = viewModel.result.value, textAlign = TextAlign.Right, modifier = Modifier.fillMaxWidth().padding(16.dp))
         Spacer(modifier = Modifier.size(16.dp))
-        CalculatorKeyboard(buttons)
+        CalculatorKeyboard(buttons, digitButtons, operatorButtons)
     }
 }
 
