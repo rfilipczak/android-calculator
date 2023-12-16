@@ -56,6 +56,7 @@ class CalculatorViewModel : ViewModel(), App {
 
     fun onUnaryOperatorButtonClick(operator: String) {
         _state.onUnaryOperatorInputEvent(operator)
+        _result.value = _state.getNumberToDisplay()
     }
 
     fun onSignButtonClick() {

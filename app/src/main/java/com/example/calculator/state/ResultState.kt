@@ -11,7 +11,13 @@ class ResultState(private val app: App, private val repo: Repository) : State {
     }
 
     override fun onUnaryOperatorInputEvent(operator: String) {
-
+        repo.setOperator(operator)
+        var result = Calculator.calculate(repo.getFirstNumber(), repo.getOperator(), repo.getSecondNumber()).toString()
+        if (result == "Infinity" || result == "-Infinity" || result == "NaN") {
+            result = "0.0"
+        }
+        repo.setResult(result)
+        repo.setFirstNumber(result)
     }
 
     override fun onBinaryOperatorInputEvent(operator: String) {

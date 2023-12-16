@@ -1,6 +1,7 @@
 package com.example.calculator.state
 
 import com.example.calculator.model.Repository
+import com.example.calculator.viewmodel.Calculator
 
 class FirstNumberInputState(private val app: App, private val repo: Repository) : State {
     private var _commaInserted = false
@@ -11,7 +12,14 @@ class FirstNumberInputState(private val app: App, private val repo: Repository) 
 
     override fun onUnaryOperatorInputEvent(operator: String) {
         repo.setOperator(operator)
-        app.changeState(UnaryOperationState(app, repo))
+        var result = Calculator.calculate(repo.getFirstNumber(), repo.getOperator(), repo.getSecondNumber()).toString()
+        if (result == "Infinity" || result == "-Infinity" || result == "NaN") {
+            result = "0.0"
+        }
+        repo.setResult(result)
+        repo.setFirstNumber(result)
+        app.changeState(ResultState(app, repo))
+//        app.changeState(UnaryOperationState(app, repo))
     }
 
     override fun onBinaryOperatorInputEvent(operator: String) {
