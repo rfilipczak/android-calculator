@@ -33,6 +33,10 @@
         <activity android:name=".view.MenuActivity">
 
         </activity>
+
+        <activity android:name=".view.InfoActivity">
+
+        </activity>
     </application>
 
 </manifest>

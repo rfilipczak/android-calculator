@@ -54,7 +54,9 @@ fun Menu(activity: MenuActivity) {
         }) {
             Text("Advanced")
         }
-        Button(onClick = { }) {
+        Button(onClick = {
+            context.startActivity(Intent(context, InfoActivity::class.java))
+        }) {
             Text("Info")
         }
         Button(onClick = { finishAffinity(activity) }) {
