@@ -1,13 +1,12 @@
 package com.example.calculator.viewmodel
 
-import java.lang.Math.log
-import java.lang.Math.pow
 import kotlin.math.cos
 import kotlin.math.ln
 import kotlin.math.pow
 import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.math.tan
+import kotlin.math.*
 
 class Calculator {
     companion object {
@@ -46,8 +45,7 @@ class Calculator {
                 }
 
                 "Log" -> {
-//                    log(firstNumber.toDouble(), secondNumber.toDouble())
-                    0.0
+                    log(firstNumber.toDouble(), secondNumber.toDouble())
                 }
 
                 "%" -> {

@@ -11,6 +11,9 @@ class FirstNumberInputState(private val app: App, private val repo: Repository) 
     }
 
     override fun onUnaryOperatorInputEvent(operator: String) {
+        if (operator == "Ln" && repo.getResult().startsWith("0")) {
+            app.warn("Ln(0)!")
+        }
         repo.setOperator(operator)
         var result = Calculator.calculate(repo.getFirstNumber(), repo.getOperator(), repo.getSecondNumber()).toString()
         if (result == "Infinity" || result == "-Infinity" || result == "NaN") {
