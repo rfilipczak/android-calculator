@@ -23,7 +23,10 @@ class ResultState(private val app: App, private val repo: Repository) : State {
     }
 
     override fun onEqualsEvent() {
-        val result = Calculator.calculate(repo.getResult(), repo.getOperator(), repo.getSecondNumber()).toString()
+        var result = Calculator.calculate(repo.getResult(), repo.getOperator(), repo.getSecondNumber()).toString()
+        if (result == "Infinity" || result == "-Infinity" || result == "NaN") {
+            result = "0.0"
+        }
         repo.setResult(result)
         repo.setFirstNumber(result)
         app.changeState(ResultState(app, repo))

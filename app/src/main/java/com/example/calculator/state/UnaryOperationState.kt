@@ -17,7 +17,10 @@ class UnaryOperationState(private val app: App, private val repo: Repository) : 
     }
 
     override fun onEqualsEvent() {
-        val result = Calculator.calculate(repo.getFirstNumber(), repo.getOperator(), repo.getSecondNumber()).toString()
+        var result = Calculator.calculate(repo.getFirstNumber(), repo.getOperator(), repo.getSecondNumber()).toString()
+        if (result == "Infinity" || result == "-Infinity" || result == "NaN") {
+            result = "0.0"
+        }
         repo.setResult(result)
         repo.setFirstNumber(result)
         app.changeState(ResultState(app, repo))
