@@ -15,18 +15,24 @@ class CalculatorRepository : Repository {
     }
 
     override fun appendDigitToFirstNumber(digit: Char) {
-        if (_firstNumber.startsWith("0")) {
-            _firstNumber = ""
+        if (_firstNumber == "0") {
+            _firstNumber = digit.toString()
+        } else {
+            _firstNumber += digit
         }
-        _firstNumber += digit
         _result = getFirstNumber()
     }
 
     override fun appendDigitToSecondNumber(digit: Char) {
-        if (_secondNumber.startsWith("0")) {
-            _secondNumber = ""
+//        if (_secondNumber.startsWith("0")) {
+//            _secondNumber = ""
+//        }
+//        _secondNumber += digit
+        if (_secondNumber == "0") {
+            _secondNumber = digit.toString()
+        } else {
+            _secondNumber += digit
         }
-        _secondNumber += digit
         _result = getSecondNumber()
     }
 
@@ -76,5 +82,19 @@ class CalculatorRepository : Repository {
 
     override fun toggleSecondNumberSign() {
         _secondNumber = toggleSign(_secondNumber)
+    }
+
+    override fun addCommaToFirstNumber() {
+        if (_firstNumber.contains('.')) {
+            return
+        }
+        _firstNumber += '.'
+    }
+
+    override fun addCommaToSecondNumber() {
+        if (_secondNumber.contains('.')) {
+            return
+        }
+        _secondNumber += '.'
     }
 }

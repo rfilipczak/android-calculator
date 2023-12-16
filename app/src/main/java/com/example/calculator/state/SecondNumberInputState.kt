@@ -31,10 +31,11 @@ class SecondNumberInputState(private val app: App, private val repo: Repository)
     }
 
     override fun onCommaEvent() {
-        if (!_commaInserted) {
-            repo.appendDigitToSecondNumber('.')
-            _commaInserted = true
-        }
+//        if (!_commaInserted) {
+//            repo.appendDigitToSecondNumber('.')
+//            _commaInserted = true
+//        }
+        repo.addCommaToSecondNumber()
     }
 
     override fun onSignEvent() {

@@ -25,7 +25,7 @@ class StartState(private val app: App, private val repo: Repository) : State {
     }
 
     override fun onCommaEvent() {
-        repo.appendDigitToFirstNumber('.')
+        repo.addCommaToFirstNumber()
         app.changeState(FirstNumberInputState(app, repo))
     }
 

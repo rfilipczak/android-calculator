@@ -39,7 +39,11 @@ class ResultState(private val app: App, private val repo: Repository) : State {
     }
 
     override fun onSignEvent() {
-
+        val result = repo.getResult()
+        repo.clear()
+        repo.setFirstNumber(result)
+        repo.toggleFirstNumberSign()
+        app.changeState(FirstNumberInputState(app, repo))
     }
 
     override fun onCEEvent() {

@@ -14,4 +14,8 @@ interface Repository {
     fun setSecondNumber(number: String)
     fun toggleFirstNumberSign()
     fun toggleSecondNumberSign()
+
+    fun addCommaToFirstNumber()
+
+    fun addCommaToSecondNumber()
 }

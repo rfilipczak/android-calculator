@@ -10,15 +10,11 @@ import com.example.calculator.state.App
 import com.example.calculator.state.StartState
 import com.example.calculator.state.State
 
-// Lifted from https://stackoverflow.com/questions/58743541/how-to-get-context-in-jetpack-compose
 open class Event<out T>(private val content: T) {
 
     var hasBeenHandled = false
-        private set // Allow external read but not write
+        private set
 
-    /**
-     * Returns the content and prevents its use again.
-     */
     fun getContentIfNotHandled(): T? {
         return if (hasBeenHandled) {
             null

@@ -29,10 +29,11 @@ class FirstNumberInputState(private val app: App, private val repo: Repository) 
     }
 
     override fun onCommaEvent() {
-        if (!_commaInserted) {
-            repo.appendDigitToFirstNumber('.')
-            _commaInserted = true
-        }
+        repo.addCommaToFirstNumber()
+//        if (!_commaInserted) {
+//            repo.appendDigitToFirstNumber('.')
+//            _commaInserted = true
+//        }
     }
 
     override fun onSignEvent() {
